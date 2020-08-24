@@ -4,3 +4,12 @@ services:
 script:
   - docker build -t swaldiecodes/node .
   - docker images swaldiecodes/node
+
+before_deploy:
+  - docker login -u swaldiecodes -p 724ALEN55ezW@B/
+
+deploy:
+  provider: script
+  script: docker push swaldiecodes/node
+  on:
+    branch: master
